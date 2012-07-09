@@ -1,0 +1,8 @@
+*~
+.DS_Store
+TAGS
+/cache/*
+/log/*
+/vendor/*
+/composer.phar
+/composer.lock
