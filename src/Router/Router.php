@@ -14,7 +14,6 @@ class Router
   {
     $app = $this->app;
 
-    require_once _CONTROLLERS_DIR_.'/Controller.php';
     $controller_class = 'Controller\\'._DEVICE_.'\Controller';
 
     // TOP

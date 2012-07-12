@@ -1,20 +1,19 @@
 <?php
-ini_set('phar.readonly', 'Off');
-ini_set('phar.require_hash', 'Off');
-ini_set('detect_unicode', 'Off');
 
 define('_PROJ_DIR_', __DIR__.'/..');
+define('_SRC_DIR_', _PROJ_DIR_.'/src');
+define('_VENDOR_DIR_', _PROJ_DIR_.'/vendor');
 // ホントは判別処理でセットする
 define('_DEVICE_', 'pc');
-define('_BASE_ROUTERS_DIR_', _PROJ_DIR_.'/routers');
+define('_BASE_ROUTERS_DIR_', _SRC_DIR_.'/Router');
 define('_ROUTERS_DIR_', _BASE_ROUTERS_DIR_.'/'._DEVICE_);
-define('_BASE_CONTROLLERS_DIR_', _PROJ_DIR_.'/controllers');
+define('_BASE_CONTROLLERS_DIR_', _SRC_DIR_.'/Controller');
 define('_CONTROLLERS_DIR_', _BASE_CONTROLLERS_DIR_.'/'._DEVICE_);
 define('_CONFIG_DIR_', _PROJ_DIR_.'/config');
 define('_LOG_DIR_', _PROJ_DIR_.'/log');
 
-require_once _PROJ_DIR_.'/vendor/autoload.php';
-$app = require _PROJ_DIR_.'/src/app.php';
+require_once _VENDOR_DIR_.'/autoload.php';
+$app = require _SRC_DIR_.'/app.php';
 
 $app->after(function() use($app) {
     if (_DEVICE_ == 'fp') {
@@ -36,7 +35,6 @@ $app->error(function (\Exception $e, $code) use ($app){
     return new Symfony\Component\HttpFoundation\Response($app['twig']->render($template_name), $code);
 });
 
-require_once _ROUTERS_DIR_.'/Router.php';
 $router_class = 'Router\\'.ucfirst(_DEVICE_).'\Router';
 $router = new $router_class($app);
 
