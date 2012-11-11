@@ -26,7 +26,11 @@ $app['twig'] = $app->share($app->extend('twig', function($twig, $app) {
 
 $app['response'] = new Response();
 
-$_app_env = apache_getenv('APPLICATION_ENV');
+if (function_exists('apache_getenv')) {
+    $_app_env = apache_getenv('APPLICATION_ENV');
+} else {
+    $_app_env = 'development';
+}
 
 $_config = parse_ini_file(_CONFIG_DIR_.'/application.ini', true);
 $app['config'] = $_config[$_app_env];

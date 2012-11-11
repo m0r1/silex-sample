@@ -5,3 +5,4 @@ TAGS
 /log/*
 /vendor/*
 /composer.phar
+phpunit.xml

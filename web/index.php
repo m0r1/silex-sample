@@ -6,11 +6,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 define('_PROJ_DIR_', __DIR__.'/..');
 define('_SRC_DIR_', _PROJ_DIR_.'/src');
 define('_VENDOR_DIR_', _PROJ_DIR_.'/vendor');
-// ホントは判別処理でセットする
-define('_DEVICE_', 'pc');
-define('_BASE_ROUTERS_DIR_', _SRC_DIR_.'/Router');
 define('_CONFIG_DIR_', _PROJ_DIR_.'/config');
 define('_LOG_DIR_', _PROJ_DIR_.'/log');
+
+// ホントは判別処理でセットする
+define('_DEVICE_', 'pc');
 
 require_once _VENDOR_DIR_.'/autoload.php';
 $app = require _SRC_DIR_.'/app.php';

@@ -15,10 +15,10 @@ class Router
         $app = $this->app;
 
         // TOP
-        $app->match('/', $this->controller('top'))->bind('top');
+        $app->get('/', $this->controller('top'))->bind('top');
 
         // Hello
-        $app->match('/hello/{name}', $this->controller('hello'))->bind('hello');
+        $app->get('/hello/{name}', $this->controller('hello'))->bind('hello');
 
         return $app;
     }
